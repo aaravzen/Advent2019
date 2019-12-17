@@ -21,7 +21,8 @@ class Computer:
         self.arr[position[0]] = self.get_param(*first) * self.get_param(*second)
 
     def input(self, first):
-        self.arr[first[0]] = int(raw_input())
+        # self.arr[first[0]] = int(raw_input())
+        self.arr[first[0]] = self.inputs.pop(0)
 
     def output(self, first):
         print(self.get_param(*first))
@@ -79,7 +80,13 @@ class Computer:
         if operation == 99:
             return False
         return True
+    
+    def nounverb(self, noun, verb):
+        self.arr[1] = noun
+        self.arr[2] = verb
 
-    def run_computer(self):
+    def run_computer(self, inputs=[]):
+        self.inputs = inputs
         while self.perform_action_on_array():
             pass
+        return self.arr[0]

@@ -1,4 +1,4 @@
-def check(number):
+def check(number, part):
     s = str(number)
     curr = 0
     for digit in s:
@@ -9,6 +9,10 @@ def check(number):
     double = False
     for i in xrange(1,len(s)):
         if s[i-1] == s[i]:
+            # part 1 logic
+            if part == 0: return True
+            
+            # part 2 logic
             if i - 2 >= 0 and s[i-2] == s[i-1] or i + 1 < len(s) and s[i+1] == s[i]:
                 pass
             else:
@@ -16,16 +20,16 @@ def check(number):
     
     return double
     
-def part1():
-    count = 0
+def dobothparts():
+    counts = [0, 0]
     for i in xrange(240920, 789857+1):
-        if check(i):
-            count += 1
-
-    print(count)
+        for j in xrange(2):
+            if check(i, j):
+                counts[j] += 1
+    print("\n".join(str(c) for c in counts))
 
 def main():
-    part1()
+    dobothparts()
 
 if __name__=="__main__":
     main()

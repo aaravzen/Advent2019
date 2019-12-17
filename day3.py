@@ -1,10 +1,8 @@
 def input():
-    inp = open("3.1.in")
+    inp = open("Input/3.1.in")
     wire_one_path = inp.readline()
     wire_two_path = inp.readline()
 
-    print(wire_one_path)
-    print(wire_two_path)
     return wire_one_path, wire_two_path
 
 class PointMap:
@@ -31,7 +29,6 @@ class PointMap:
                 self.points[t] = self.traveled
 
     def parse(self, instruction):
-        print(instruction)
         x_coord = True
         direction = 1
         letter = instruction[0]
@@ -47,15 +44,18 @@ class PointMap:
         distance = int(instruction[1:])
         return distance, x_coord, direction
     
-    def get_closest_intersection(self, other):
+    def get_closest_intersection(self, other, part):
         intersections = set(self.points.keys()).intersection(set(other.points.keys()))
         best = 99999999
         for intersection in intersections:
-            # delta = abs(intersection[0]) + abs(intersection[1])
-            delta = self.points[intersection] + other.points[intersection]
+            if part == 0:
+                delta = abs(intersection[0]) + abs(intersection[1])
+            else:
+                delta = self.points[intersection] + other.points[intersection]
+            
             if delta < best:
                 best = delta
-        print(best)
+        return best
 
 
 def get_closest_hub(pm1, pm2):
@@ -65,6 +65,7 @@ def main():
     w1,w2 = input()
     pm1 = PointMap(w1)
     pm2 = PointMap(w2)
-    pm1.get_closest_intersection(pm2)
+    for i in xrange(2):
+        print(pm1.get_closest_intersection(pm2, i))
 
 main()
