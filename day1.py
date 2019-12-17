@@ -1,22 +1,24 @@
 def fuel(mass):
     return mass // 3 - 2
 
-inp = open("1.1.in")
+inp = open("Input/1.1.in")
 l = []
 
 for line in inp:
     l.append(int(line))
-#l = [100756]
 
-print(l)
+# print(l)
 
-total = 0
+part_one = 0
+part_two = 0
 for x in l:
     f = fuel(x)
+    part_one += f
     for_module = f
     while f >= 9:
         f = fuel(f)
         for_module += f
-    total += for_module
+    part_two += for_module
 
-print(total)
+print(part_one)
+print(part_two)
