@@ -5,10 +5,12 @@ def main():
     arr = map(int, open(fname).readline().split(","))
     
     c = Computer(arr[:])
-    c.run_computer([1])
+    ret, outputs, dump = c.run_computer([1])
+    print(outputs)
 
     c = Computer(arr[:])
-    c.run_computer([5])
+    ret, outputs, dump = c.run_computer([5])
+    print(outputs)
 
 if __name__=="__main__":
     main()

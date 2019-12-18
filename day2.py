@@ -8,7 +8,7 @@ def main():
         for v in xrange(100):
             c = Computer(arr[:])
             c.nounverb(n, v)
-            ret = c.run_computer()
+            ret,outputs,dump = c.run_computer()
             if n == 12 and v == 2:
                 print("1202 run yields: %d" % ret)
             if ret == 19690720:
