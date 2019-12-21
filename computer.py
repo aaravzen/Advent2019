@@ -1,4 +1,4 @@
-# Used for Days 2, 5, 7
+# Used for Days 2, 5, 7, 9, 11
 class Computer:
     def __init__(self, filearr):
         self.paramaters_per_operation = {1: 3, 2: 3, 3: 1, 4: 1, 5: 2, 6: 2, 7: 3, 8: 3, 9: 1, 99: 0}
